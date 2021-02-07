@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Question 4
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <h1>
+        Age Calculator
+    </h1>
+
+    <h2>Please Fill In Your Date Of Birth In The Provided Boxes</h2>
+    <form action="">
+        <input type="text" id="dob" placeholder="YYYY">
+        <input type="text" id="dob2" placeholder="MM">
+        <input type="text" id="dob3" placeholder="DD">
+        <input type="button" onclick="calAge()" value="Calculate Age" class="btn">
+    </form>
+
+
+    <p id="ageOfPerson"></p>
+
+    <div>
+        <img src="images/ages.png" alt="clipart of four people youngest to oldest">
+    </div>
+
+
+    <script>
+
+        function calAge() {
+            var answer, isDateVal, date, year, month, day, dateOfBirth, dateOfBirth1, dobDay, dobMonth, dobYear, todayDate, todayDay, todayMonth, todayYear, calAge, daysInMonth, isValidDate, ageOfPerson1, isValidDate1;
+
+
+            year = (document.getElementById("dob").value);
+            month = (document.getElementById("dob2").value);
+            day = (document.getElementById("dob3").value);
+            dateOfBirth = year + "/" + month + "/" + day;
+            
+            date = new Date(year, (+month - 1), day);
+            isDateVal = (Boolean(+date) && date.getDate() == day);
+            answer = "";
+
+            if (isDateVal == true) {
+                answer = "true";
+            }
+            else if (isDateVal == false) {
+                answer = "is false";
+            }
+            
+            dateOfBirth1 = new Date(dateOfBirth);     
+            dobDay = dateOfBirth1.getDate();     
+            dobMonth = dateOfBirth1.getMonth();           
+            dobYear = dateOfBirth1.getFullYear();
+            
+            todayDate = new Date();
+            todayDay = todayDate.getDate();
+            todayMonth = todayDate.getMonth();
+            todayYear = todayDate.getFullYear();
+
+            calAge = 0;
+
+
+            if (todayMonth > dobMonth) {
+                ageCal = todayYear - dobYear;
+            }
+            else if (todayMonth == dobMonth) {
+                if (todayDay >= dobDay) {
+                    ageCal = todayYear - dobYear;
+                }
+                else
+                    ageCal = todayYear - dobYear - 1;
+            }
+            else {
+                ageCal = todayYear - dobYear - 1;
+            }
+
+            if (dobYear % 4 == 0 && dobYear % 100 != 0 || dobYear % 400 == 0) {
+                ageOfPerson1 = "leapYear";
+            }
+            else {
+                ageOfPerson1 = "not a leapYear";
+            }
+
+            document.getElementById("ageOfPerson").innerHTML = "You are " + ageCal + " years old." + " This year is " + ageOfPerson1;
+
+            try {
+                if (answer.length == 8) throw "Invalid Date Entered. Try Again!!";
+                if(isNaN(dobMonth)) throw "invalid Date Entered. Try Again!!"
+                if (year <= 99) throw "invalid Date Entered. Try Again!!"
+            }
+            catch (err) {
+                document.getElementById("ageOfPerson").innerHTML = err;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

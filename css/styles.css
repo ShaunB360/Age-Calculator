@@ -1,0 +1,48 @@
+body {
+    text-align: center;
+    background-color: coral;
+    font-family: 'Roboto',
+    sans-serif;
+}
+
+
+
+h1, h2 {
+    color: blueviolet;
+    padding-top: 30px;
+}
+
+.btn{
+    background-color: gold;
+    cursor: pointer;
+    color: blueviolet;
+    font-size: medium;
+}
+
+.btn:hover{
+    background-color: honeydew;
+    color: black;
+    border: 3px solid yellowgreen;
+}
+
+#dob, #dob2, #dob3{
+    background-color:gold;
+}
+
+#dob:hover {
+    background-color: ghostwhite;
+    color: black;
+    border: 3px solid yellowgreen;
+}
+
+#dob2:hover{
+    background-color: ghostwhite;
+    color: black;
+    border: 3px solid yellowgreen;
+}
+
+#dob3:hover{
+    background-color: ghostwhite;
+    color: black;
+    border: 3px solid yellowgreen;
+}
